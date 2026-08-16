@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="header">✏️ {{ t.edit }}</h1>
+
+<form method="post" action="/traders/{{ trader.id }}/edit?lang={{ lang }}">
+<input type="hidden" name="lang" value="{{ lang }}">
+
+<label>{{ t.traderId }}</label>
+<input value="{{ trader.trader_code }}" readonly>
+
+<label>{{ t.businessName }}</label>
+<input name="business_name" value="{{ trader.business_name or '' }}" required>
+
+<label>{{ t.ownerName }}</label>
+<input name="owner_name" value="{{ trader.owner_name or '' }}" required>
+
+<label>{{ t.mobile }}</label>
+<input name="mobile" value="{{ trader.mobile or '' }}">
+
+<label>{{ t.ward }}</label>
+<input type="number" name="ward_no" value="{{ trader.ward_no or '' }}">
+
+<label>{{ t.building }}</label>
+<input name="building_no" value="{{ trader.building_no or '' }}">
+
+<label>{{ t.address }}</label>
+<textarea name="address" rows="3">{{ trader.address or '' }}</textarea>
+
+<label>{{ t.trade }}</label>
+<input name="trade_type" value="{{ trader.trade_type or '' }}">
+
+<div class="section">
+<h2>{{ t.licenceDetails }}</h2>
+<label>{{ t.licenceQuestion }}</label>
+
+<div class="options">
+<label class="option">
+<input type="radio" name="has_licence" value="Yes" {% if trader.has_licence == "Yes" %}checked{% endif %}>
+{{ t.yes }}
+</label>
+<label class="option">
+<input type="radio" name="has_licence" value="No" {% if trader.has_licence == "No" %}checked{% endif %}>
+{{ t.no }}
+</label>
+<label class="option">
+<input type="radio" name="has_licence" value="Don't Know" {% if trader.has_licence == "Don't Know" %}checked{% endif %}>
+{{ t.unknown }}
+</label>
+</div>
+
+<label>{{ t.licenceNumber }}</label>
+<input name="licence_number" value="{{ trader.licence_number or '' }}">
+
+<label>{{ t.issueDate }}</label>
+<input type="date" name="licence_issue_date" value="{{ trader.licence_issue_date or '' }}">
+
+<label>{{ t.expiryDate }}</label>
+<input type="date" name="licence_expiry_date" value="{{ trader.licence_expiry_date or '' }}">
+
+<label>{{ t.noLicenceReason }}</label>
+<select name="no_licence_reason">
+<option value=""></option>
+<option value="Never applied" {% if trader.no_licence_reason == "Never applied" %}selected{% endif %}>{{ t.neverApplied }}</option>
+<option value="Application pending" {% if trader.no_licence_reason == "Application pending" %}selected{% endif %}>{{ t.applicationPending }}</option>
+<option value="Licence expired" {% if trader.no_licence_reason == "Licence expired" %}selected{% endif %}>{{ t.licenceExpired }}</option>
+<option value="Not aware" {% if trader.no_licence_reason == "Not aware" %}selected{% endif %}>{{ t.notAware }}</option>
+<option value="Other" {% if trader.no_licence_reason == "Other" %}selected{% endif %}>{{ t.other }}</option>
+</select>
+
+<label>{{ t.remarks }}</label>
+<textarea name="remarks" rows="4">{{ trader.remarks or '' }}</textarea>
+
+<button type="submit" class="save-button">{{ t.update }}</button>
+</div>
+
+</form>
+
+{% endblock %}

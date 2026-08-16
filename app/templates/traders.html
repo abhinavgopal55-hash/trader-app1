@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="header">{{ t.register }}</h1>
+
+<form method="get" action="/traders" class="search">
+<input type="hidden" name="lang" value="{{ lang }}">
+<input type="text" name="q" value="{{ q }}" placeholder="{{ t.searchPlaceholder }}">
+<button type="submit">{{ t.search }}</button>
+</form>
+
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th>{{ t.traderId }}</th>
+<th>{{ t.businessName }}</th>
+<th>{{ t.ownerName }}</th>
+<th>{{ t.ward }}</th>
+<th>{{ t.licenceNumber }}</th>
+<th>{{ t.status }}</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+
+{% if rows %}
+  {% for tr, status in rows %}
+  <tr>
+    <td>{{ tr.trader_code }}</td>
+    <td>{{ tr.business_name }}</td>
+    <td>{{ tr.owner_name }}</td>
+    <td>{{ tr.ward_no or "-" }}</td>
+    <td>{{ tr.licence_number or "-" }}</td>
+    <td>
+      {% if status == "VALID" %}
+        <span class="status valid">{{ t.valid }}</span>
+      {% elif status == "EXPIRED" %}
+        <span class="status expired">{{ t.expired }}</span>
+      {% elif status == "NO_LICENCE" %}
+        <span class="status no-licence">{{ t.noLicence }}</span>
+      {% else %}
+        <span class="status verification">{{ t.verification }}</span>
+      {% endif %}
+    </td>
+    <td>
+      <a class="action view" href="/traders/{{ tr.id }}?lang={{ lang }}">{{ t.view }}</a>
+      <a class="action edit" href="/traders/{{ tr.id }}/edit?lang={{ lang }}">{{ t.edit }}</a>
+      <a class="action delete" href="/traders/{{ tr.id }}/delete?lang={{ lang }}">{{ t.delete }}</a>
+    </td>
+  </tr>
+  {% endfor %}
+{% else %}
+  <tr><td colspan="7" style="text-align:center">{{ t.noRecords }}</td></tr>
+{% endif %}
+
+</tbody>
+</table>
+</div>
+
+{% endblock %}

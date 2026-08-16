@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="header">{{ trader.business_name }}</h1>
+
+<div class="section">
+<h2>{{ t.businessDetails }}</h2>
+<p><strong>{{ t.traderId }}:</strong> {{ trader.trader_code }}</p>
+<p><strong>{{ t.businessName }}:</strong> {{ trader.business_name }}</p>
+<p><strong>{{ t.ownerName }}:</strong> {{ trader.owner_name }}</p>
+<p><strong>{{ t.mobile }}:</strong> {{ trader.mobile or "-" }}</p>
+<p><strong>{{ t.ward }}:</strong> {{ trader.ward_no or "-" }}</p>
+<p><strong>{{ t.building }}:</strong> {{ trader.building_no or "-" }}</p>
+<p><strong>{{ t.address }}:</strong> {{ trader.address or "-" }}</p>
+<p><strong>{{ t.trade }}:</strong> {{ trader.trade_type or "-" }}</p>
+</div>
+
+<div class="section">
+<h2>{{ t.licenceDetails }}</h2>
+<p><strong>{{ t.licenceQuestion }}</strong> {{ trader.has_licence or "-" }}</p>
+<p><strong>{{ t.licenceNumber }}:</strong> {{ trader.licence_number or "-" }}</p>
+<p><strong>{{ t.issueDate }}:</strong> {{ trader.licence_issue_date.strftime('%d/%m/%Y') if trader.licence_issue_date else "-" }}</p>
+<p><strong>{{ t.expiryDate }}:</strong> {{ trader.licence_expiry_date.strftime('%d/%m/%Y') if trader.licence_expiry_date else "-" }}</p>
+<p><strong>{{ t.status }}:</strong>
+  {% if status == "VALID" %}
+    <span class="status valid">{{ t.valid }}</span>
+  {% elif status == "EXPIRED" %}
+    <span class="status expired">{{ t.expired }}</span>
+  {% elif status == "NO_LICENCE" %}
+    <span class="status no-licence">{{ t.noLicence }}</span>
+  {% else %}
+    <span class="status verification">{{ t.verification }}</span>
+  {% endif %}
+</p>
+<p><strong>{{ t.noLicenceReason }}:</strong> {{ trader.no_licence_reason or "-" }}</p>
+</div>
+
+<div class="section">
+<h2>{{ t.remarks }}</h2>
+<p>{{ trader.remarks or "-" }}</p>
+</div>
+
+{% endblock %}

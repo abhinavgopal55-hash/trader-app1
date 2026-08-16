@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ t.title }}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="confirm-box">
+<h1>⚠️ {{ t.confirmDelete }}</h1>
+<p>{{ t.deleteConfirm }}</p>
+
+<div class="trader-id">{{ trader.trader_code }}</div>
+
+<p><strong>{{ trader.business_name }}</strong></p>
+<p>{{ trader.owner_name or "" }}</p>
+
+<form method="post" action="/traders/{{ trader.id }}/delete?lang={{ lang }}">
+<input type="hidden" name="lang" value="{{ lang }}">
+<div class="confirm-actions">
+<button type="submit" class="delete-confirm-button">{{ t.delete }}</button>
+<a class="cancel-confirm-button" href="/traders?lang={{ lang }}">{{ t.cancel }}</a>
+</div>
+</form>
+
+</div>
+
+</body>
+</html>

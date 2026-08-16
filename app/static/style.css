@@ -1,0 +1,264 @@
+body {
+  font-family: Arial, "Noto Sans Malayalam", sans-serif;
+  background: #eef3f5;
+  margin: 0;
+  padding: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
+}
+
+.header {
+  text-align: center;
+  color: #146c43;
+  margin-bottom: 25px;
+}
+
+.menu {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  background: #146c43;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 7px;
+}
+
+.language {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.language a {
+  display: inline-block;
+  background: #146c43;
+  color: white;
+  text-decoration: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  margin: 4px;
+}
+
+.section {
+  margin-top: 25px;
+}
+
+.section h2 {
+  color: #146c43;
+  border-bottom: 2px solid #146c43;
+  padding-bottom: 8px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background: #146c43;
+  color: white;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+.save-button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.option {
+  flex: 1;
+  background: #f1f3f4;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.option input {
+  width: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background: #146c43;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background: #f5f5f5;
+}
+
+.status {
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.valid { background: #d1e7dd; color: #0f5132; }
+.expired { background: #fff3cd; color: #664d03; }
+.no-licence { background: #f8d7da; color: #842029; }
+.verification { background: #cff4fc; color: #055160; }
+
+.action {
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px;
+}
+
+.view { background: #146c43; }
+.edit { background: #0d6efd; }
+.delete { background: #dc3545; border: none; cursor: pointer; font-size: 13px; }
+
+.success {
+  max-width: 600px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px #ccc;
+}
+
+.success h1 { color: #146c43; }
+
+.trader-id {
+  font-size: 30px;
+  color: #146c43;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.card {
+  padding: 25px 15px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+.card h3 { margin: 0; font-size: 15px; }
+
+.number {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.total { background: #146c43; }
+.licensed { background: #198754; }
+.no-license-card { background: #dc3545; }
+.expired-card { background: #fd7e14; }
+.verification-card { background: #0dcaf0; color: #073b4c; }
+
+.search {
+  display: flex;
+  gap: 10px;
+}
+
+.search input { flex: 1; }
+
+.confirm-box {
+  max-width: 600px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px #ccc;
+}
+
+.confirm-box h1 { color: #dc3545; }
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.confirm-actions button,
+.confirm-actions a {
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete-confirm-button { background: #dc3545; color: white; }
+.cancel-confirm-button { background: #6c757d; color: white; }
+
+@media (max-width: 800px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .container { padding: 15px; }
+  .cards { grid-template-columns: 1fr; }
+  .options { flex-direction: column; }
+  .search { flex-direction: column; }
+  .confirm-actions { flex-direction: column; }
+}

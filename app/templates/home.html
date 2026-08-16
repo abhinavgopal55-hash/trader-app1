@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="header">{{ t.title }}</h1>
+
+<form method="post" action="/?lang={{ lang }}">
+<input type="hidden" name="lang" value="{{ lang }}">
+
+<div class="section">
+<h2>{{ t.businessDetails }}</h2>
+
+<label>{{ t.businessName }}</label>
+<input type="text" name="business_name" required>
+
+<label>{{ t.ownerName }}</label>
+<input type="text" name="owner_name" required>
+
+<label>{{ t.mobile }}</label>
+<input type="tel" name="mobile">
+
+<label>{{ t.ward }}</label>
+<input type="number" name="ward_no" min="1">
+
+<label>{{ t.building }}</label>
+<input type="text" name="building_no">
+
+<label>{{ t.address }}</label>
+<textarea name="address" rows="3"></textarea>
+
+<label>{{ t.trade }}</label>
+<input type="text" name="trade_type">
+</div>
+
+<div class="section">
+<h2>{{ t.licenceDetails }}</h2>
+<label>{{ t.licenceQuestion }}</label>
+
+<div class="options">
+<label class="option">
+<input type="radio" name="has_licence" value="Yes" onclick="showLicence('yes')" required>
+{{ t.yes }}
+</label>
+<label class="option">
+<input type="radio" name="has_licence" value="No" onclick="showLicence('no')">
+{{ t.no }}
+</label>
+<label class="option">
+<input type="radio" name="has_licence" value="Don't Know" onclick="showLicence('unknown')">
+{{ t.unknown }}
+</label>
+</div>
+
+<div id="licenceFields" style="display:none">
+<label>{{ t.licenceNumber }}</label>
+<input type="text" name="licence_number">
+
+<label>{{ t.issueDate }}</label>
+<input type="date" name="licence_issue_date">
+
+<label>{{ t.expiryDate }}</label>
+<input type="date" name="licence_expiry_date">
+</div>
+
+<div id="reasonFields" style="display:none">
+<label>{{ t.noLicenceReason }}</label>
+<select name="no_licence_reason">
+<option value="">{{ t.all }}</option>
+<option value="Never applied">{{ t.neverApplied }}</option>
+<option value="Application pending">{{ t.applicationPending }}</option>
+<option value="Licence expired">{{ t.licenceExpired }}</option>
+<option value="Not aware">{{ t.notAware }}</option>
+<option value="Other">{{ t.other }}</option>
+</select>
+</div>
+</div>
+
+<div class="section">
+<label>{{ t.remarks }}</label>
+<textarea name="remarks" rows="4"></textarea>
+</div>
+
+<button type="submit" class="save-button">{{ t.save }}</button>
+
+</form>
+
+<script>
+function showLicence(type) {
+  document.getElementById("licenceFields").style.display = type === "yes" ? "block" : "none";
+  document.getElementById("reasonFields").style.display = type === "no" ? "block" : "none";
+}
+</script>
+
+{% endblock %}

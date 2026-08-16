@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="header">{{ t.dashboard }}</h1>
+
+<div class="cards">
+
+<div class="card total">
+<h3>{{ t.totalTraders }}</h3>
+<div class="number">{{ total }}</div>
+</div>
+
+<div class="card licensed">
+<h3>{{ t.licensed }}</h3>
+<div class="number">{{ licensed }}</div>
+</div>
+
+<div class="card no-license-card">
+<h3>{{ t.noLicence }}</h3>
+<div class="number">{{ no_licence }}</div>
+</div>
+
+<div class="card expired-card">
+<h3>{{ t.expired }}</h3>
+<div class="number">{{ expired }}</div>
+</div>
+
+<div class="card verification-card">
+<h3>{{ t.verification }}</h3>
+<div class="number">{{ verification }}</div>
+</div>
+
+</div>
+
+<div class="section">
+<h2>{{ t.wardWise }}</h2>
+<table>
+<thead>
+<tr>
+<th>{{ t.ward }}</th>
+<th>{{ t.numberOfTraders }}</th>
+</tr>
+</thead>
+<tbody>
+{% if ward_counts %}
+  {% for ward, count in ward_counts %}
+  <tr>
+    <td>{{ t.ward }} {{ ward }}</td>
+    <td>{{ count }}</td>
+  </tr>
+  {% endfor %}
+{% else %}
+  <tr><td colspan="2" style="text-align:center">{{ t.noRecords }}</td></tr>
+{% endif %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}
